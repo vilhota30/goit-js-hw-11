@@ -27,7 +27,7 @@ export function createMarkupElem (photos) {
                     <b>Comments</b>
                     ${comments}
                  </p>
-                p class="info-item">
+                <p class="info-item">
                     <b>Downloads</b>
                     ${downloads}
                  </p>

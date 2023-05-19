@@ -1,0 +1,27 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    width: 100vw;
+    height: 4.0625rem;
+    background-color: darkmagenta;
+}
+
+.header-container {
+    padding-top: .625rem;
+    padding-bottom: .625rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 16.5rem;
+}
+.search-input{
+    background-color: violet;
+}
+.form-btn {
+    background-color: darkviolet;
+}
