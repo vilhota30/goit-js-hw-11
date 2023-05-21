@@ -39,7 +39,7 @@
     height: 3.375rem;
     border-radius: 50%;
     display: inline-block;
-    border-top: .25rem solid #fff;
+    border-top: .25rem solid #f6a6a6;
     border-right: .25rem solid transparent;
     animation: rotation 1s linear infinite;
 
@@ -51,8 +51,17 @@
         width: 3.375rem;
         height: 3.375rem;
         border-radius: 50%;
-        border-left: .25rem solid #AE1100;
+        border-left: .25rem solid #f15dd6;
         border-bottom: .25rem solid transparent;
         animation: rotation 0.5s linear infinite reverse;
+    }
+}
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg)
+    }
+
+    100% {
+        transform: rotate(360deg)
     }
 }
