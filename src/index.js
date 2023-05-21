@@ -19,7 +19,7 @@ window.addEventListener('load', () => {
   spinnerStop();
 });
 
-refs.btnLoadMore.classList.add('is-hidden');
+ refs.btnLoadMore.classList.add('is-hidden');
 
 const pixaby = new PixabayAPI();
 
