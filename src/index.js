@@ -40,7 +40,7 @@ const loadMorePhotos = async function (entries, observer) {
       try {
         spinnerStart();
         const {hits} = await pixaby.getPhotos();
-        const markup = createMarkupElem();
+        const markup = createMarkupElem(hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
 
         if (pixaby.hasMorePhotos) {
@@ -118,7 +118,7 @@ const onSubmitClick = async event => {
 
 const onLoadMore = async () => {
  pixaby.incrementPage();
-
+ 
  if (!pixaby.hasMorePhotos) {
   refs.btnLoadMore.classList.add('is-hidden');
   Notify.info("We're sorry, but you've reached the end of search results.");

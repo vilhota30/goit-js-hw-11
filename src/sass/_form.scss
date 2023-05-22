@@ -9,7 +9,7 @@
 }
 
 .header-container {
-    padding-top: .625rem;
+    padding-top: 1.325rem;
     padding-bottom: .625rem;
 }
 
@@ -21,7 +21,14 @@
 }
 .search-input{
     background-color: violet;
+    margin-right: 8px;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .form-btn {
     background-color: darkviolet;
+    border-radius: 8px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
