@@ -1,14 +1,18 @@
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { createMarkupElem } from './createMarkup';
-import { PixabayAPI } from './PixabayAPI';
-import { refs } from './refsPageElem';
-import { notifyInit } from './notifyInit';
-import { spinnerStart, spinnerStop } from './pageSpinner';
+import { createMarkupElem } from './base.js/createMarkup';
+import { PixabayAPI } from './base.js/PixabayAPI';
+import { refs } from './base.js/refsPageElem';
+import renderTitleTheEnd from './base.js/renderTitleTheEnd';
+import { notifyInit } from './base.js/notifyInit';
+import { spinnerStart, spinnerStop } from './base.js/pageSpinner';
+
+renderTitleTheEnd(refs);
+const changeTitleH1TheEnd = str => (refs.titleH1TheEnd.textContent = str);
 
 const modalLightboxGallery = new SimpleLightbox('.gallery a', {
-    captionDelay: 250,
+    captionDelay: 300,
   });
 
 spinnerStart();
@@ -42,8 +46,10 @@ const loadMorePhotos = async function (entries, observer) {
         const {hits} = await pixaby.getPhotos();
         const markup = createMarkupElem(hits);
         refs.gallery.insertAdjacentHTML('beforeend', markup);
+        changeTitleH1TheEnd('The End');
+        
 
-        if (pixaby.hasMorePhotos) {
+        if (!pixaby.hasMorePhotos()) {
           const lastItem = document.querySelector('.gallery a:last-child');
           observer.observe(lastItem);
         } else 
@@ -78,7 +84,7 @@ const onSubmitClick = async event => {
   if (!search_query) {
     clearPage();
     Notify.info('Enter data search!', notifyInit);
-
+    changeTitleH1TheEnd('');
     return; 
   }
   pixaby.query = search_query;
@@ -92,13 +98,14 @@ const onSubmitClick = async event => {
       Notify.failure(
         `Sorry, there are no images matching your ${search_query}. Please, try agan`, notifyInit
       );
+      changeTitleH1TheEnd('');
       return;
     }
     const markup = createMarkupElem(hits);
     refs.gallery.insertAdjacentHTML('beforeend', markup);
 
     pixaby.setTotal(total);
-    Notify.success(`Hooray! We found ${total} images.`, notifyInit);
+    Notify.success(`Hooray! We found 80 images.`, notifyInit);
 
     if (pixaby.hasMorePhotos) {
       const lastItem = document.querySelector('.gallery a:last-child');
@@ -119,7 +126,7 @@ const onSubmitClick = async event => {
 const onLoadMore = async () => {
  pixaby.incrementPage();
  
- if (!pixaby.hasMorePhotos) {
+ if (!pixaby.hasMorePhotos()) {
   refs.btnLoadMore.classList.add('is-hidden');
   Notify.info("We're sorry, but you've reached the end of search results.");
   notifyInit;

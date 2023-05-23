@@ -8,3 +8,10 @@ export const refs = {
     searchInput: document.getElementById('#search-form'),
   };
   
+  // function renderTitleTheEnd (refs) {
+  //   const titleTheEnd = `<h1 class="gallery-title"></h1>`;
+  //   refs.gallery.insertAdjacentHTML('afterend', titleTheEnd);
+  //   refs.titleTheEnd = document.querySelector('.gallery-title');
+  //   }
+    
+  //   export default renderTitleTheEnd;
