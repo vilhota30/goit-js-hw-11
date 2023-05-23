@@ -49,7 +49,7 @@ const loadMorePhotos = async function (entries, observer) {
         changeTitleH1TheEnd('The End');
         
 
-        if (!pixaby.hasMorePhotos()) {
+        if (pixaby.hasMorePhotos()) {
           const lastItem = document.querySelector('.gallery a:last-child');
           observer.observe(lastItem);
         } else 
@@ -105,7 +105,7 @@ const onSubmitClick = async event => {
     refs.gallery.insertAdjacentHTML('beforeend', markup);
 
     pixaby.setTotal(total);
-    Notify.success(`Hooray! We found 80 images.`, notifyInit);
+    Notify.success(`Hooray! We found ${total} images.`, notifyInit);
 
     if (pixaby.hasMorePhotos) {
       const lastItem = document.querySelector('.gallery a:last-child');
@@ -126,7 +126,7 @@ const onSubmitClick = async event => {
 const onLoadMore = async () => {
  pixaby.incrementPage();
  
- if (!pixaby.hasMorePhotos()) {
+ if (pixaby.hasMorePhotos()) {
   refs.btnLoadMore.classList.add('is-hidden');
   Notify.info("We're sorry, but you've reached the end of search results.");
   notifyInit;

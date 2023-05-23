@@ -26,9 +26,19 @@
     padding-top: 5px;
     padding-bottom: 5px;
 }
+.search-input:hover,
+.search-input:focus {
+ border-color: violet;
+}
 .form-btn {
     background-color: darkviolet;
     border-radius: 8px;
     padding-top: 5px;
     padding-bottom: 5px;
 }
+.form-btn:hover,
+.form-btn:focus{
+    border-color: violet;
+}
+
+
